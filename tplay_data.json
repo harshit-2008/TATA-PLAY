@@ -1,30 +1,20 @@
 {
-  "ToonsPlus": [
+  "ZeeKannadaHD": [
     {
-      "title": "Tata Play Toons+",
-      "tataSkyid": 994,
-      "link": "https://bpprod3linear.akamaized.net/bpk-tv/irdeto_com_Channel_1821/output/manifest.mpd",
-      "k": "e953c724d5735900a2e4ef63d710c552:db24fc8bddfe0d06f67135bae6b74cfe",
+      "title": "Zee Kannada HD",
+      "tataSkyid": 675,
+      "link": "https://bpweb3.akamaized.net/bpk-tv/irdeto_com_Channel_917/output/manifest.mpd",
+      "k": "dd2ca5fddc045872ba5b79565607dfaa:a9ff4e0a49e2ba4c11d74c15716ba2df",
       "audio": [
-        "Hindi",
-        "Tamil",
-        "Telugu",
-        "Bengali",
-        "Marathi",
-        "Punjabi"
+        "Kannada"
       ],
       "audio_id": [
-        "audio_94482_hin=94000",
-        "audio_94490_tam=94000",
-        "audio_94483_tel=94000",
-        "audio_94486_ben=94000",
-        "audio_94487_mar=94000",
-        "audio_94494_pan=94000"
+        "audio_94494_kannada=94000"
       ],
-      "video_id": "video=1297600",
+      "video_id": "video=400000714",
       "ripType": "TATAPlay TV-DL",
       "catchup": "04:09:00",
-      "quality": "480p"
+      "quality": "1080p"
     }
   ],
   "CNHD+": [
