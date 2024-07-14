@@ -3,7 +3,6 @@ import time
 import subprocess
 import threading
 import json
-import requests
 
 from datetime import datetime
 
@@ -177,34 +176,6 @@ def mux_video(audio_data, video_data, end_code, show_name, res, langs, time_data
 
   return out_file_name
 
-  # Function to check file size
-def get_file_size(video_data):
-    return os.path.getsize(video_data)
-
-
-  def split_video(audio_data, video_data):
-    dec_out_video_file_name = f"dec_{video_data}-{end_code}.mp4"
-output_file = os.path.join(output_folder, 'part_')
-    subprocess.run(['ffmpeg', '-i', input_video, '-c', 'copy', '-map', '0', '-segment_time', '1800', '-f', 'segment', f'{output_file}%03d.mp4'])
-
-# Function to merge audio and subtitles
-def merge_audio_subtitles(input_video, input_audio, output_file):
-    subprocess.run(['ffmpeg', '-i', input_video, '-i', input_audio, '-i',  'copy', output_file])
-
-# Main function
-def main_splitt(input_video, input_audio):
-    # Check file sizes
-    if get_file_size(input_video) > 1800000000:
-        split_video_audio(input_video, 'video_parts')
-
-    if get_file_size(input_audio) > 1800000000:
-        split_video_audio(input_audio, 'audio_parts')
-
-out_file_name = "{}.{}.{}.TATAPLAY.WEB-DL.AAC2.0.{}.H264-{}.mkv".format(show_name, time_data, res, "-".join(langs) , GROUP_TAG).replace(" " , ".")
-  out_file_name = out_file_name.replace("30.00" , "30").replace("00.00" , "00")
-  ffmpeg_opts.extend(["-c", "copy", out_name])
- 
-
 
 def ind_time():
     return datetime.now(timezone("Asia/Kolkata")).strftime('[%H:%M].[%d-%m-%Y]')
@@ -235,17 +206,6 @@ def download_playback_catchup(channel, title, data_json, app, message):
 
   # Muxing
   filename = mux_video(data_json[channel][0]['audio_id'], data_json[channel][0]['video_id'], end_code, title, data_json[channel][0]['quality'], data_json[channel][0]['audio'], time_data, msg)
-
-
-#Splitting
-filename = split_video(data_json[channel][0]['audio_id'], data_json[channel][0]['video_id'], end_code, title, data_json[channel][0]['quality'], data_json[channel][0]['audio'], time_data, msg)
-
-#Merging
-filename = merge_audio_subtitles(data_json[channel][0]['audio_id'], data_json[channel][0]['video_id'], end_code, title, data_json[channel][0]['quality'], data_json[channel][0]['audio'], time_data, msg)
-
-
-#Main function
-filename = main_splitt(data_json[channel][0]['audio_id'], data_json[channel][0]['video_id'], end_code, title, data_json[channel][0]['quality'], data_json[channel][0]['audio'], time_data, msg)
 
 
   process_end_time = time.time()
@@ -360,17 +320,6 @@ def download_catchup(catchup_url, data_json, app, message):
         filename = mux_video(data_json[channel][0]['audio_id'], data_json[channel][0]['video_id'], end_code, title, data_json[channel][0]['quality'], data_json[channel][0]['audio'], time_data, msg)
 
 
-#Splitting
-filename = split_video(data_json[channel][0]['audio_id'], data_json[channel][0]['video_id'], end_code, title, data_json[channel][0]['quality'], data_json[channel][0]['audio'], time_data, msg)
-
-#Merging
-filename = merge_audio_subtitles(data_json[channel][0]['audio_id'], data_json[channel][0]['video_id'], end_code, title, data_json[channel][0]['quality'], data_json[channel][0]['audio'], time_data, msg)
-
-
-#Main function
-filename = main_splitt(data_json[channel][0]['audio_id'], data_json[channel][0]['video_id'], end_code, title, data_json[channel][0]['quality'], data_json[channel][0]['audio'], time_data, msg)
-
-
         process_end_time = time.time()
 
         size = humanbytes(os.path.getsize(filename))
@@ -380,8 +329,8 @@ filename = main_splitt(data_json[channel][0]['audio_id'], data_json[channel][0][
         caption = DL_DONE_MSG.format(
                 "Ripping" , get_readable_time(process_end_time - process_start_time) ,filename, data_json[channel][0]['title'] , size)
         app.send_video(video=filename, chat_id = message.chat.id , caption=caption , progress=progress_for_pyrogram, progress_args=("**Uploading...** \n", msg, start_time) , thumb=thumb, duration=duration , width=1280, height=720)
+        
 
         os.remove(filename)
         
         msg.delete()
-      
