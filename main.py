@@ -2,11 +2,14 @@ import json, subprocess
 
 from pyrogram import Client, filters
 
-from tata import download_catchup, download_playback_catchup , module
+from tata import download_catchup, download_playback_catchup
 
 from utils import check_user, get_tplay_data
 
 from config import api_id, api_hash, bot_token, script_developer
+
+
+
 
 print("Installing YT-DLP")
 subprocess.run("pip install yt-dlp".split())
@@ -14,7 +17,7 @@ subprocess.run("pip install yt-dlp".split())
 
 data_json = get_tplay_data()
 
-app = Client("Tpleeybot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
+app = Client("RC_tplay_dl_bot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 
 
 
@@ -23,7 +26,7 @@ app = Client("Tpleeybot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 def tplay_past_catchup_dl_cmd_handler(app, message):
 
     if "/start" in message.text:
-        app.send_photo(chat_id = message.chat.id, photo= "https://graph.org/file/9a10b85e931057451b73d.jpg",caption = "<b>TataPlay Catchup Bot</b>\n\n`> >`<b>Made By @LostIddd</b>")
+        app.send_photo(chat_id = message.chat.id, photo= "https://te.legra.ph/file/7d10268d6467214723d10.jpg",caption = "<b>TataPlay Catchup Bot</b>\n\n`> >`<b>Made By DoreXAnimation</b>")
     
         
 
@@ -77,7 +80,7 @@ def tplay_past_catchup_dl_cmd_handler(app, message):
 @app.on_message(filters.incoming & filters.command(['start']) & filters.text)
 def start_cmd_handler(app, message):
 
-    message.reply_text("<b>TataPlay Catchup Bot</b>\n\n`> >`<b> Made By @LostIddd</b>")
+    message.reply_text("<b>TataPlay Catchup Bot</b>\n\n`> >`<b> Made By DoreXAnimation</b>")
     
 
 print(script_developer , "\n")
