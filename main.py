@@ -17,7 +17,7 @@ subprocess.run("pip install yt-dlp".split())
 
 data_json = get_tplay_data()
 
-app = Client("RC_tplay_dl_bot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
+app = Client("Tpleeybot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 
 
 
@@ -26,7 +26,7 @@ app = Client("RC_tplay_dl_bot", api_id=api_id, api_hash=api_hash, bot_token=bot_
 def tplay_past_catchup_dl_cmd_handler(app, message):
 
     if "/start" in message.text:
-        app.send_photo(chat_id = message.chat.id, photo= "https://te.legra.ph/file/7d10268d6467214723d10.jpg",caption = "<b>TataPlay Catchup Bot</b>\n\n`> >`<b>Made By DoreXAnimation</b>")
+        app.send_photo(chat_id = message.chat.id, photo= "https://graph.org/file/9a10b85e931057451b73d.jpg",caption = "<b>TataPlay Catchup Bot</b>\n\n`> >`<b>Made By @LostIddd</b>")
     
         
 
@@ -80,7 +80,7 @@ def tplay_past_catchup_dl_cmd_handler(app, message):
 @app.on_message(filters.incoming & filters.command(['start']) & filters.text)
 def start_cmd_handler(app, message):
 
-    message.reply_text("<b>TataPlay Catchup Bot</b>\n\n`> >`<b> Made By DoreXAnimation</b>")
+    message.reply_text("<b>TataPlay Catchup Bot</b>\n\n`> >`<b> Made By @LostIddd</b>")
     
 
 print(script_developer , "\n")
