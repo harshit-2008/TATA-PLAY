@@ -1,22 +1,4 @@
 {
-  "ZeeKannadaHD": [
-    {
-      "title": "Zee Kannada HD",
-      "tataSkyid": 675,
-      "link": "https://bpweb3.akamaized.net/bpk-tv/irdeto_com_Channel_917/output/manifest.mpd",
-      "k": "dd2ca5fddc045872ba5b79565607dfaa:a9ff4e0a49e2ba4c11d74c15716ba2df",
-      "audio": [
-        "Kannada"
-      ],
-      "audio_id": [
-        "audio_94494_kannada=94000"
-      ],
-      "video_id": "video=400000714",
-      "ripType": "TATAPlay TV-DL",
-      "catchup": "04:09:00",
-      "quality": "1080p"
-    }
-  ],
   "CNHD+": [
     {
       "title": "Cartoon Network HD+",
@@ -255,8 +237,8 @@
     {
       "title": "Disney Channel",
       "tataSkyid": 114,
-      "link": "https://bpprod3linear.akamaized.net/bpk-tv/irdeto_com_Channel_166/output/manifest.mpd",
-      "k": "2f27d053d83d5284859cdd8b26bb17e2:97604260299b8de63bed1967efcc3659",
+      "link": "https://bpweb3.akamaized.net/bpk- tv/irdeto_com_Channel_166/output/manifest.mpd",
+      "k": "f4f6091d8be75cd3b750d0ab75f87e90:97b97c8aa8c7cd235f04831902be5d5f",
       "audio": [
         "Hindi",
         "Tamil",
