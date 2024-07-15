@@ -2,7 +2,7 @@ api_id = 27190467
 
 api_hash = "ff6bc6ad2faba520f426cf04ca7f5773"
 
-bot_token = "7101306689:AAEocjX3ESu1TbwZcdY27Eod4CuJOdJaTio"
+bot_token = "7101306689:AAGnMn5Hk_8n4y192NIXSuGlHBT2zSGZE0I"
 
 GROUP_TAG = "SharkToonsIndia"
 
