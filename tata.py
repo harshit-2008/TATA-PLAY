@@ -182,7 +182,10 @@ def ind_time():
 
 
 def download_playback_catchup(channel, title, data_json, app, message):
-  msg = message.reply_text(f"<b>Processing...</b>")
+    if filename is None:
+        print("Error: filename is None")
+        return
+ elif msg = message.reply_text(f"<b>Processing...</b>")
 
   time_data = ind_time()
   
@@ -211,6 +214,7 @@ def download_playback_catchup(channel, title, data_json, app, message):
   process_end_time = time.time()
 
   size = humanbytes(os.path.getsize(filename))
+print(f"File size: {size}")
   duration = get_duration(filename)
   thumb = get_thumbnail(filename, "", duration / 2)
   start_time = time.time()
