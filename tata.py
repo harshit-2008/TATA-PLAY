@@ -1,8 +1,9 @@
+
 import os
 import time
 import subprocess
 import threading
-import json
+import json, requests
 
 from datetime import datetime
 
@@ -182,19 +183,35 @@ def ind_time():
 
 
 def download_playback_catchup(channel, title, data_json, app, message):
+  try:
+      response = requests.get(f"https://tata-api-74ca6e701dd2.herokuapp.com/alive", timeout=300)
+  except Exception as e:
+      print(e)
+  
+  if response.status_code == 200: 
+      alive = response.json()
+      if alive == "Alive":
+          pass
+      else:
+          return  
+            
   msg = message.reply_text(f"<b>Processing...</b>")
 
   time_data = ind_time()
   
   final_file_name = "{}.{}.{}.TATAPLAY.WEB-DL.AAC2.0.{}.H264-{}.mkv".format(title, time_data, data_json[channel][0]['quality'], "-".join(data_json[channel][0]['audio']) , GROUP_TAG).replace(" " , ".")
+  
+  stream = data_json[channel][0]['link'].replace("linear" , "catchup") + "?begin=" + str(begin) + "&end=" + str(end)
+  print(stream)
 
+  
   process_start_time = time.time()
         
 
   msg.edit(f'''<b>Downloading...</b>\n<code>{final_file_name}</code>
   ''')
 
-  end_code = mpd_download(data_json[channel][0]['link'], data_json[channel][0]['audio_id'], data_json[channel][0]['video_id'], msg)
+  end_code = mpd_download(stream  , data_json[channel][0]['link'], data_json[channel][0]['audio_id'], data_json[channel][0]['video_id'], msg)
 
   msg.edit(f'''<b>Decrypting...</b>\n<code>{final_file_name}</code>
         ''')
