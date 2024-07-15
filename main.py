@@ -2,7 +2,7 @@ import json, subprocess
 
 from pyrogram import Client, filters
 
-from tata import download_catchup, download_playback_catchup, ind_time  
+from tata import download_catchup, download_playback_catchup  
 
 from utils import check_user, get_tplay_data
 
